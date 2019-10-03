@@ -1,4 +1,4 @@
-package entities;
+package com.rm83162.healthtrack.entities;
 
 import java.time.LocalDateTime;
 

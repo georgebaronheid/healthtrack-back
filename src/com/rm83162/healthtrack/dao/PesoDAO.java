@@ -1,8 +1,8 @@
-package dao;
+package com.rm83162.healthtrack.dao;
 
 import java.util.List;
 
-import entities.Peso;
+import com.rm83162.healthtrack.entities.Peso;
 import java.time.format.DateTimeFormatter;
 
 public class PesoDAO {
@@ -21,7 +21,7 @@ public class PesoDAO {
 			}
 		}
 		else {
-			System.out.println("Não há listagens de peso para retornar");
+			System.out.println("Nï¿½o hï¿½ listagens de peso para retornar");
 		}
 	}
 }

@@ -1,4 +1,4 @@
-package testes;
+package com.rm83162.healthtrack.testes;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-import dao.PesoDAO;
-import entities.Peso;
+import com.rm83162.healthtrack.dao.PesoDAO;
+import com.rm83162.healthtrack.entities.Peso;
 
 public class PesoDaoTeste {
 
