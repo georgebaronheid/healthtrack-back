@@ -5,10 +5,12 @@ import java.util.Date;
 public class Atividades {
 	public String nome;
 	public String tipo;
+	public TipoAtividade tipoAtividade;
 	public Integer duracao;
 	public Date data;
 	
-	public Atividades(String nome, String tipo, Integer duracao, Date data) {
+	public Atividades(String nome, String tipo, Integer duracao, Date data, TipoAtividade tipoAtividade) {
+		this.tipoAtividade = tipoAtividade;
 		this.nome = nome;
 		this.tipo = tipo;
 		this.duracao = duracao;

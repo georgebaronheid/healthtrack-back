@@ -1,10 +1,7 @@
 package com.rm83162.healthtrack.testes;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 import com.rm83162.healthtrack.dao.PesoDAO;
 import com.rm83162.healthtrack.entities.Peso;
@@ -27,7 +24,7 @@ public class PesoDaoTeste {
 			System.out.println();
 			System.out.printf("Digite o valor do peso em kg da medição %s: ", i + 1);
 			double peso = sc.nextDouble();
-			LocalDateTime data = LocalDateTime.now();
+			Date data = LocalDateTime.now();
 			pesos.add(new Peso(peso, data));
 		}
 		
