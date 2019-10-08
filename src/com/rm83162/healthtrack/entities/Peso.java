@@ -14,15 +14,16 @@ public class Peso {
 	private Integer idPeso;
 	private Integer idUsuario;
 	private double valorKg;
-	private Calendar dataEdicao;
-	private Calendar dataCriacao;
+	private Date dataEdicao;
+	private Date dataCriacao;
 
-	public Peso(Integer idPeso, Integer idUsuario, double valorKg, Date dataEdicao, Date dataCriacao) {
-		this.idUsuario = idUsuario;
+	public Peso(){}
+
+	public Peso(double valorKg) {
 		this.valorKg = valorKg;
 	}
 
-	public Peso(Integer idPeso, Integer idUsuario, double valorKg, Calendar dataEdicao, Calendar dataCriacao) {
+	public Peso(int idPeso, int idUsuario, double valorKg, Date dataEdicao, Date dataCriacao){
 		this.idPeso = idPeso;
 		this.idUsuario = idUsuario;
 		this.valorKg = valorKg;
@@ -30,10 +31,6 @@ public class Peso {
 		this.dataCriacao = dataCriacao;
 	}
 
-
-
-//	public Peso(int idPeso, int idUsuario, double valorPeso, Date dataEdicao, Date dataCriacao) {
-//	}
 
 	public Integer getIdPeso() {
 		return idPeso;
@@ -53,19 +50,19 @@ public class Peso {
 		this.valorKg = valorKg;
 	}
 
-	public Calendar getDataEdicao() {
+	public Date getDataEdicao() {
 		return dataEdicao;
 	}
 
-	public void setDataEdicao(Calendar dataEdicao) {
+	public void setDataEdicao(Date dataEdicao) {
 		this.dataEdicao = dataEdicao;
 	}
 
-	public Calendar getDataCriacao() {
+	public Date getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(Calendar dataCriacao) {
+	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
@@ -85,15 +82,15 @@ public class Peso {
 
 	@Override
 	public String toString(){
-		return "CÛdigo do peso: "
+		return "C√≥digo do peso: "
 				+ getIdPeso()
-				+ "CÛdigo do usu·rio: "
+				+ ", C√≥digo do usu√°rio: "
 				+ getIdUsuario()
 				+ ", peso :"
-				+ getValorKg()
-				+ ", data de criaÁ„o :"
+				+ String.format("%.2f", getValorKg())
+				+ ", data de cria√ß√£o :"
 				+ dateFormat.format(getDataCriacao().getTime())
-				+ ", data de ediÁ„o: "
+				+ ", data de edi√ß√£o: "
 				+ dateFormat.format(getDataEdicao().getTime());
 
 	}

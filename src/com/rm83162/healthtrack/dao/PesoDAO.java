@@ -12,6 +12,29 @@ public class PesoDAO {
 	private Connection connection;
 
 
+	/**
+	 * Método que popula a tabela Peso para objetivo de teste
+	 * @throws SQLException
+	 */
+	public void cargaInicialPeso() throws SQLException {
+		double i = 50;
+		do {
+			register(new Peso(i));
+			i++;
+		} while (i < 70);
+		System.out.println("Carga inicial feita com sucesso");
+
+	}
+
+	/**
+	 * Método que cadastra um peso
+	 * Como não há sistema de perfil parar ser associado a id de usuário o método atual
+	 * considera por padrão o id do usuário como 1. Isto será alterado quando houver configuração
+	 * de perfil para possibilitar a recuperação do id do usuário logado.
+	 * Informações como data de registor e data de atualização são retiradas no sistema no momento de alteração
+	 * @param peso
+	 * @throws SQLException
+	 */
 	public void register(Peso peso) throws SQLException {
 		PreparedStatement preparedStatement = null;
 
@@ -22,9 +45,9 @@ public class PesoDAO {
 			String sql = "INSERT INTO T_HT_PESO(ID_PESO, ID_USUARIO, VL_PESO, DT_EDICAO, DT_CRIACAO) VALUES (SEQ_HT_PESO.NEXTVAL, 1, ?, ?, ?)";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setDouble(1,peso.getValorKg());
-			java.sql.Date dataEdicao = new java.sql.Date(peso.getDataEdicao().getTimeInMillis());
+			java.sql.Date dataEdicao = new java.sql.Date(new java.util.Date().getTime());
 			preparedStatement.setDate(2, dataEdicao);
-			java.sql.Date dataCriacao = new java.sql.Date(peso.getDataCriacao().getTimeInMillis());
+			java.sql.Date dataCriacao = new java.sql.Date(new java.util.Date().getTime());
 			preparedStatement.setDate(3,dataCriacao);
 
 			preparedStatement.executeUpdate();
@@ -52,7 +75,7 @@ public class PesoDAO {
 	 * @param peso
 	 * @throws SQLException
 	 */
-	public void update(Peso peso) throws SQLException {
+	public void update(Peso peso, int idPeso) throws SQLException {
 		PreparedStatement preparedStatement = null;
 
 		try {
@@ -62,12 +85,14 @@ public class PesoDAO {
 			String sql = "UPDATE T_HT_PESO SET VL_PESO = ?, DT_EDICAO = ? WHERE ID_PESO = ?";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setDouble(1, peso.getValorKg());
-			java.sql.Date dataUpdate = new java.sql.Date(peso.getDataEdicao().getTimeInMillis());
+			java.sql.Date dataUpdate = new java.sql.Date(new java.util.Date().getTime());
 			preparedStatement.setDate(2, dataUpdate);
+			preparedStatement.setInt(3, idPeso);
 
 			preparedStatement.executeUpdate();
 
 			connection.commit();
+			System.out.println("Atualização feita com sucesso!");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -167,7 +192,7 @@ public class PesoDAO {
 			String sql = "SELECT * FROM T_HT_PESO";
 			preparedStatement = connection.prepareStatement(sql);
 
-			preparedStatement.executeQuery();
+			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()){
 				Integer idPeso = resultSet.getInt(1);
