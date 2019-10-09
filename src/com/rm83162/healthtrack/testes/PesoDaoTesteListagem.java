@@ -13,5 +13,7 @@ public class PesoDaoTesteListagem {
         for(Peso pesos : todosPesos) {
             System.out.println(pesos);
         }
+
+
     }
 }

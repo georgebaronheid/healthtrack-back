@@ -23,7 +23,6 @@ public class PesoDAO {
 			i++;
 		} while (i < 70);
 		System.out.println("Carga inicial feita com sucesso");
-
 	}
 
 	/**
