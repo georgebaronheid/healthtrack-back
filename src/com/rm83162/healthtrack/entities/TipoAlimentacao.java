@@ -2,19 +2,19 @@ package com.rm83162.healthtrack.entities;
 
 public class TipoAlimentacao {
 
-    public double idTipoAlimentacao;
+    public int idTipoAlimentacao;
     public String descricao;
     public double valorCaloriaPorKg;
 
     public TipoAlimentacao(){}
 
-    public TipoAlimentacao(double idTipoAlimentacao, String descricao, double valorCaloriaPorKg) {
+    public TipoAlimentacao(int idTipoAlimentacao, String descricao, double valorCaloriaPorKg) {
         this.idTipoAlimentacao = idTipoAlimentacao;
         this.descricao = descricao;
         this.valorCaloriaPorKg = valorCaloriaPorKg;
     }
 
-    public double getIdTipoAlimentacao() {
+    public int getIdTipoAlimentacao() {
         return idTipoAlimentacao;
     }
 
